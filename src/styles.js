@@ -13,6 +13,9 @@ export const GlobalStyle = createGlobalStyle`
 
 	body {
 		margin: 0;
+		font-family: 'Rajdhani', 'Cuprum', sans-serif;
 		font-size: 1rem;
+		font-weight: 400;
+
 	}
 `;
