@@ -24,11 +24,11 @@ export default function HomePage() {
 	return (
 		<Layout>
 			<Head>
-				<title key="title">My Project</title>
+				<title key="title">just pack</title>
 				<meta key="description" name="description" content="This is my project" />
 			</Head>
+			<h1>just pack</h1>
 			<StyledForm />
-			<h1>Home</h1>
 			{loading && <div>Loading...</div>}
 			{error && <div>{error.message}</div>}
 			{data && (

@@ -17,27 +17,33 @@ export default function StyledForm() {
 			item: 'Badehose',
 		},
 	]);
-
 	return (
-		<form
-			onSubmit={event => {
-				event.preventDefault();
-				setItems([...items, {item: inputValue}]);
-				setInputValue('');
-			}}
-		>
-			<label>
-				Item:
-				<input
-					required
-					minLength="3"
-					value={inputValue}
-					onChange={event => {
-						setInputValue(event.target.value);
-					}}
-				/>
-			</label>
-			<button type="submit">Submit</button>
-		</form>
+		<>
+			<ul>
+				{items.map(item => {
+					return <li key={item.id}>{item.item}</li>;
+				})}
+			</ul>
+			<form
+				onSubmit={event => {
+					event.preventDefault();
+					setItems([...items, {item: inputValue, id: nanoid()}]);
+					setInputValue('');
+				}}
+			>
+				<label>
+					Item:
+					<input
+						required
+						minLength="3"
+						value={inputValue}
+						onChange={event => {
+							setInputValue(event.target.value);
+						}}
+					/>
+				</label>
+				<button type="submit">Submit</button>
+			</form>
+		</>
 	);
 }
