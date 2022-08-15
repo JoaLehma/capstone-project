@@ -4,6 +4,7 @@ import {useState} from 'react';
 
 import Button from '../components/Button';
 import Layout from '../components/Layout';
+import StyledForm from '../components/StyledForm';
 import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
 
@@ -26,6 +27,7 @@ export default function HomePage() {
 				<title key="title">My Project</title>
 				<meta key="description" name="description" content="This is my project" />
 			</Head>
+			<StyledForm />
 			<h1>Home</h1>
 			{loading && <div>Loading...</div>}
 			{error && <div>{error.message}</div>}
