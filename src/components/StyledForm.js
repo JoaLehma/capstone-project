@@ -36,6 +36,7 @@ export default function StyledForm() {
 					<input
 						required
 						minLength="3"
+						placeholder="what do you want to take?"
 						value={inputValue}
 						onChange={event => {
 							setInputValue(event.target.value);
