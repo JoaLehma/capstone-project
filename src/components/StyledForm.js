@@ -17,15 +17,18 @@ export default function StyledForm() {
 				})}
 			</ul>
 			<form
+				aria-label="Add a item"
 				onSubmit={event => {
 					event.preventDefault();
 					addItem(inputValue);
 					setInputValue('');
 				}}
 			>
-				<label>
+				<label htmlFor="item">
 					Item:
 					<StyledInput
+						id="item"
+						type="text"
 						required
 						minLength="3"
 						placeholder="don't forget me"
