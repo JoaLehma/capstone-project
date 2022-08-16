@@ -1,22 +1,13 @@
-import {nanoid} from 'nanoid';
 import {useState} from 'react';
+
+import useStore from '../hooks/useStore';
 
 export default function StyledForm() {
 	const [inputValue, setInputValue] = useState('');
-	const [items, setItems] = useState([
-		{
-			id: nanoid(),
-			item: 'Zelt',
-		},
-		{
-			id: nanoid(),
-			item: 'Wanderschuhe',
-		},
-		{
-			id: nanoid(),
-			item: 'Badehose',
-		},
-	]);
+
+	const items = useStore(state => state.items);
+	const addItem = useStore(state => state.addItem);
+
 	return (
 		<>
 			<ul>
@@ -27,7 +18,7 @@ export default function StyledForm() {
 			<form
 				onSubmit={event => {
 					event.preventDefault();
-					setItems([...items, {item: inputValue, id: nanoid()}]);
+					addItem(inputValue);
 					setInputValue('');
 				}}
 			>
