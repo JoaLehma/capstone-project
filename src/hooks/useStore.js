@@ -4,10 +4,10 @@ import create from 'zustand';
 const useStore = create(set => {
 	return {
 		items: [
-			{item: 'Zelt', id: nanoid(), isChecked: true},
-			{item: 'Grill', id: nanoid(), isChecked: false},
-			{item: 'Wein', id: nanoid(), isChecked: false},
-			{item: 'noch mehr Wein', id: nanoid(), isChecked: false},
+			{item: 'Zelt', id: nanoid()},
+			{item: 'Grill', id: nanoid()},
+			{item: 'Wein', id: nanoid()},
+			{item: 'noch mehr Wein', id: nanoid()},
 		],
 		addItem: item => {
 			set(state => {
