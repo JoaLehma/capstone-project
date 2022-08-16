@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
@@ -24,10 +25,10 @@ export default function StyledForm() {
 			>
 				<label>
 					Item:
-					<input
+					<StyledInput
 						required
 						minLength="3"
-						placeholder="what do you want to take?"
+						placeholder="don't forget me"
 						value={inputValue}
 						onChange={event => {
 							setInputValue(event.target.value);
@@ -39,3 +40,7 @@ export default function StyledForm() {
 		</>
 	);
 }
+
+const StyledInput = styled.input`
+	margin: 5px;
+`;
