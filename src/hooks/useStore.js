@@ -15,6 +15,15 @@ const useStore = create(set => {
 				return {items: [...state.items, {item, id: nanoid()}]};
 			});
 		},
+		checkItem: id => {
+			set(state => {
+				return {
+					items: state.items.map(item =>
+						item.id === id ? {...item, isChecked: !item.isChecked} : item
+					),
+				};
+			});
+		},
 	};
 });
 
