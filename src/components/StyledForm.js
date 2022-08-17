@@ -15,11 +15,16 @@ export default function StyledForm() {
 
 	return (
 		<>
-			<ul>
+			<StyledlList>
 				{items.map(item => {
-					return <li key={item.id}>{item.item}</li>;
+					return (
+						<li key={item.id}>
+							<input type="checkbox" />
+							{item.item}
+						</li>
+					);
 				})}
-			</ul>
+			</StyledlList>
 			<form aria-label="Add an item" onSubmit={handleSubmit}>
 				<label>
 					Item:
@@ -41,4 +46,8 @@ export default function StyledForm() {
 
 const StyledInput = styled.input`
 	margin: 5px;
+`;
+
+const StyledlList = styled.ul`
+	list-style: none;
 `;
