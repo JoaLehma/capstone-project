@@ -1,13 +1,17 @@
-import {useState} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
 export default function StyledForm() {
-	const [inputValue, setInputValue] = useState('');
-
 	const items = useStore(state => state.items);
 	const addItem = useStore(state => state.addItem);
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		const item = event.target.elements.itemInput.value;
+		addItem(item);
+		event.target.reset();
+	}
 
 	return (
 		<>
@@ -16,25 +20,17 @@ export default function StyledForm() {
 					return <li key={item.id}>{item.item}</li>;
 				})}
 			</ul>
-			<form
-				aria-label="Add an item"
-				onSubmit={event => {
-					event.preventDefault();
-					addItem(inputValue);
-					setInputValue('');
-				}}
-			>
+			<form aria-label="Add an item" onSubmit={handleSubmit}>
 				<label>
 					Item:
 					<StyledInput
 						type="text"
+						id="itemInput"
 						required
+						name="itemInput"
+						autoComplete="off"
 						minLength="3"
 						placeholder="don't forget me"
-						value={inputValue}
-						onChange={event => {
-							setInputValue(event.target.value);
-						}}
 					/>
 				</label>
 				<button type="submit">Submit</button>
