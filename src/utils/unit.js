@@ -12,7 +12,6 @@ export function rem(n) {
 
 /**
  * Converts a number from pixel to rem and adds the unit suffix.
- *
  * @param {number} pixel
  * @param {number} rootFontSize
  * @return {string}
