@@ -5,6 +5,8 @@ import useStore from '../hooks/useStore';
 export default function StyledForm() {
 	const items = useStore(state => state.items);
 	const addItem = useStore(state => state.addItem);
+	const checkItem = useStore(state => state.checkItem);
+	const falseFirst = items.sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -16,11 +18,24 @@ export default function StyledForm() {
 	return (
 		<>
 			<StyledlList>
-				{items.map(item => {
+				{falseFirst.map(item => {
 					return (
 						<li key={item.id}>
-							<input type="checkbox" />
-							{item.item}
+							<input
+								type="checkbox"
+								checked={item.isChecked}
+								onChange={() => {
+									checkItem(item.id);
+								}}
+							/>
+							<span
+								style={{
+									textDecoration: item.isChecked && 'line-through',
+									color: item.isChecked && 'lightgrey',
+								}}
+							>
+								{item.item}
+							</span>
 						</li>
 					);
 				})}
