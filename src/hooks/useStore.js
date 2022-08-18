@@ -12,7 +12,7 @@ const useStore = create(set => {
 
 		addItem: item => {
 			set(state => {
-				return {items: [...state.items, {item, id: nanoid()}]};
+				return {items: [...state.items, {item, id: nanoid(), isChecked: false}]};
 			});
 		},
 		checkItem: id => {
