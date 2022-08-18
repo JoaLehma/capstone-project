@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
@@ -6,6 +7,7 @@ export default function StyledForm() {
 	const items = useStore(state => state.items);
 	const addItem = useStore(state => state.addItem);
 	const checkItem = useStore(state => state.checkItem);
+	const deleteItem = useStore(state => state.deleteItem);
 	const falseFirst = items.sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
 
 	function handleSubmit(event) {
@@ -20,7 +22,7 @@ export default function StyledForm() {
 			<StyledlList role="list">
 				{falseFirst.map(item => {
 					return (
-						<li key={item.id}>
+						<StyledList key={item.id}>
 							<input
 								type="checkbox"
 								checked={item.isChecked}
@@ -36,7 +38,20 @@ export default function StyledForm() {
 							>
 								{item.item}
 							</span>
-						</li>
+							<StyledButton
+								type="button"
+								onClick={() => {
+									deleteItem(item.id);
+								}}
+							>
+								<Image
+									src="/trash.svg"
+									alt="An SVG of trash can"
+									width="16px"
+									height="16px"
+								/>
+							</StyledButton>
+						</StyledList>
 					);
 				})}
 			</StyledlList>
@@ -65,4 +80,20 @@ const StyledInput = styled.input`
 
 const StyledlList = styled.ul`
 	list-style: none;
+`;
+
+const StyledButton = styled.button`
+	margin-top: 5px;
+	transform: translate(0, -8%);
+	border: none;
+	background-color: transparent;
+
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+const StyledList = styled.li`
+	display: flex;
+	align-items: center;
 `;
