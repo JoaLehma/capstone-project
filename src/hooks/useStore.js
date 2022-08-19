@@ -15,6 +15,11 @@ const useStore = create(set => {
 				return {items: [...state.items, {item, id: nanoid(), isChecked: false}]};
 			});
 		},
+		deleteItem: id => {
+			set(state => {
+				return {items: state.items.filter(item => item.id !== id)};
+			});
+		},
 		checkItem: id => {
 			set(state => {
 				return {
