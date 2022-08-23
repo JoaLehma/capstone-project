@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
 
 export default function StyledForm() {
@@ -9,10 +10,16 @@ export default function StyledForm() {
 	const checkItem = useStore(state => state.checkItem);
 	const deleteItem = useStore(state => state.deleteItem);
 	const falseFirst = items.sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
+	const fetchApi = useFetch();
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
 		const item = event.target.elements.itemInput.value;
+		await fetchApi('/api/createItem', {
+			method: 'POST',
+			body: JSON.stringify({item}),
+		});
+
 		addItem(item);
 		event.target.reset();
 	}

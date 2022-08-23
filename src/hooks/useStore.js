@@ -10,6 +10,16 @@ const useStore = create(set => {
 			{item: 'noch mehr Wein', id: nanoid(), isChecked: false},
 		],
 
+		fetchItems: async url => {
+			try {
+				const response = await fetch(url);
+				const data = await response.json();
+				set({fetchedItems: data});
+			} catch (error) {
+				console.error(`Upps das war ein Fehler: ${error}`);
+			}
+		},
+
 		addItem: item => {
 			set(state => {
 				return {items: [...state.items, {item, id: nanoid(), isChecked: false}]};
