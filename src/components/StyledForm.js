@@ -1,63 +1,34 @@
-import Image from 'next/image';
+import {useEffect} from 'react';
 import styled from 'styled-components';
 
-import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
 
 export default function StyledForm() {
 	const items = useStore(state => state.items);
-	const addItem = useStore(state => state.addItem);
-	const checkItem = useStore(state => state.checkItem);
-	const deleteItem = useStore(state => state.deleteItem);
-	const falseFirst = items.sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
-	const fetchApi = useFetch();
+	const getItems = useStore(state => state.getItems);
+	const addItems = useStore(state => state.addItems);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const item = event.target.elements.itemInput.value;
-		await fetchApi('/api/createItem', {
-			method: 'POST',
-			body: JSON.stringify({item}),
-		});
 
-		addItem(item);
+		addItems(item);
 		event.target.reset();
 	}
+
+	useEffect(() => {
+		getItems();
+	}, [getItems]);
+	console.log(items);
 
 	return (
 		<>
 			<StyledlList role="list">
-				{falseFirst.map(item => {
+				{items.map(item => {
 					return (
-						<StyledList key={item.id}>
-							<input
-								type="checkbox"
-								checked={item.isChecked}
-								onChange={() => {
-									checkItem(item.id);
-								}}
-							/>
-							<span
-								style={{
-									textDecoration: item.isChecked && 'line-through',
-									color: item.isChecked && 'lightgrey',
-								}}
-							>
-								{item.item}
-							</span>
-							<StyledButton
-								type="button"
-								onClick={() => {
-									deleteItem(item.id);
-								}}
-							>
-								<Image
-									src="/trash.svg"
-									alt="An SVG of trash can"
-									width="16px"
-									height="16px"
-								/>
-							</StyledButton>
+						<StyledList key={item._id}>
+							<input type="checkbox" />
+							<span>{item.item}</span>
 						</StyledList>
 					);
 				})}
@@ -87,17 +58,6 @@ const StyledInput = styled.input`
 
 const StyledlList = styled.ul`
 	list-style: none;
-`;
-
-const StyledButton = styled.button`
-	margin-top: 5px;
-	transform: translate(0, -8%);
-	border: none;
-	background-color: transparent;
-
-	&:hover {
-		cursor: pointer;
-	}
 `;
 
 const StyledList = styled.li`

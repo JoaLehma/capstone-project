@@ -13,4 +13,9 @@ export default async function handler(request, response) {
 			message: 'item created',
 		});
 	}
+	if (request.method === 'GET') {
+		const items = await Item.find();
+
+		response.status(200).json(items);
+	}
 }

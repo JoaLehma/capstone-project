@@ -19,14 +19,14 @@
     "toc": "npx markdown-toc@1 README.md -i"
   },
   "dependencies": {
-    "axios": "0.27.2",
+    "axios": "^0.27.2",
     "mongoose": "^6.5.2",
     "nanoid": "4.0.0",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "5.3.5",
-    "zustand": "4.0.0"
+    "zustand": "^4.0.0"
   },
   "devDependencies": {
     "@jest/globals": "^28.1.3",
