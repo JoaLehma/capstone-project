@@ -11,7 +11,7 @@ export default function StyledForm() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const item = event.target.elements.itemInput.value;
-
+		console.log(item);
 		addItems(item);
 		event.target.reset();
 	}

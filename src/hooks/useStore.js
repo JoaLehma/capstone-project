@@ -1,7 +1,7 @@
 import axios from 'axios';
 import create from 'zustand';
 
-const useStore = create((set, get) => {
+const useStore = create(set => {
 	return {
 		items: [],
 		getItems: async () => {
@@ -15,13 +15,13 @@ const useStore = create((set, get) => {
 		addItems: async item => {
 			console.log('adding items');
 			try {
-				const result = await fetch('/api/connect', {
+				const response = await fetch('/api/connect', {
 					method: 'POST',
 					body: JSON.stringify({item}),
 				});
-				get().getItems();
-
-				return await result.json();
+				const result = await response.json();
+				set(() => ({items: result.items}));
+				return result;
 			} catch (error) {
 				console.error(error);
 			}
