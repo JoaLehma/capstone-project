@@ -11,7 +11,6 @@ export default function StyledForm() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const item = event.target.elements.itemInput.value;
-		console.log(item);
 		addItems(item);
 		event.target.reset();
 	}
@@ -27,7 +26,8 @@ export default function StyledForm() {
 				{items.map(item => {
 					return (
 						<StyledList key={item._id}>
-							<input type="checkbox" />
+							<label htmlFor="items" />
+							<input type="checkbox" name="items" />
 							<span>{item.item}</span>
 						</StyledList>
 					);
