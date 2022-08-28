@@ -26,6 +26,14 @@ const useStore = create(set => {
 				console.error(error);
 			}
 		},
+
+		deleteItem: itemId =>
+			set(state => {
+				const items = state.items.filter(function (item) {
+					return item.itemId !== itemId;
+				});
+				return {items: items};
+			}),
 	};
 });
 
