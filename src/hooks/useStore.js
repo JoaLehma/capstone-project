@@ -1,33 +1,30 @@
-import {nanoid} from 'nanoid';
+import axios from 'axios';
 import create from 'zustand';
 
 const useStore = create(set => {
 	return {
-		items: [
-			{item: 'Zelt', id: nanoid(), isChecked: false},
-			{item: 'Grill', id: nanoid(), isChecked: false},
-			{item: 'Wein', id: nanoid(), isChecked: false},
-			{item: 'noch mehr Wein', id: nanoid(), isChecked: false},
-		],
+		items: [],
+		getItems: async () => {
+			console.log('fetching items');
+			const response = await axios.get('/api/connect');
+			const result = await response.data;
 
-		addItem: item => {
-			set(state => {
-				return {items: [...state.items, {item, id: nanoid(), isChecked: false}]};
-			});
+			set(() => ({items: result}));
 		},
-		deleteItem: id => {
-			set(state => {
-				return {items: state.items.filter(item => item.id !== id)};
-			});
-		},
-		checkItem: id => {
-			set(state => {
-				return {
-					items: state.items.map(item =>
-						item.id === id ? {...item, isChecked: !item.isChecked} : item
-					),
-				};
-			});
+
+		addItems: async item => {
+			console.log('adding items');
+			try {
+				const response = await fetch('/api/connect', {
+					method: 'POST',
+					body: JSON.stringify({item}),
+				});
+				const result = await response.json();
+				set(() => ({items: result.items}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
 		},
 	};
 });
