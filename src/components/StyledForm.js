@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 
@@ -29,6 +30,14 @@ export default function StyledForm() {
 							<label htmlFor="items" />
 							<input type="checkbox" name="items" />
 							<span>{item.item}</span>
+							<StyledButton type="button">
+								<Image
+									src="/trash.svg"
+									alt="An SVG of trash can"
+									width="16px"
+									height="16px"
+								/>
+							</StyledButton>
 						</StyledList>
 					);
 				})}
@@ -63,4 +72,14 @@ const StyledlList = styled.ul`
 const StyledList = styled.li`
 	display: flex;
 	align-items: center;
+`;
+
+const StyledButton = styled.button`
+	margin-top: 5px;
+	transform: translate(0, -8%);
+	border: none;
+	background-color: transparent;
+	&:hover {
+		cursor: pointer;
+	}
 `;
