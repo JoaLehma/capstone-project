@@ -27,13 +27,33 @@ const useStore = create(set => {
 			}
 		},
 
-		deleteItem: itemId =>
-			set(state => {
-				const items = state.items.filter(function (item) {
-					return item.itemId !== itemId;
+		deleteItem: async id => {
+			console.log('delete items');
+			try {
+				const response = await fetch(`/api/${id}`, {
+					method: 'DELETE',
 				});
-				return {items: items};
-			}),
+				const result = await response.json();
+				set(() => ({items: result.items}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
+
+		// deleteItem: async itemId => {
+		// 	console.log('delete item');
+		// 	try {
+		// 		const response = await fetch(`/api/${itemId}`, {
+		// 			method: 'DELETE',
+		// 		});
+		// 		const deletedItem = await response.json();
+		// 		set(() => ({items: deletedItem.items}));
+		// 		return deletedItem;
+		// 	} catch (error) {
+		// 		console.error(error);
+		// 	}
+		// },
 	};
 });
 

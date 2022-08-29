@@ -8,6 +8,7 @@ export default function StyledForm() {
 	const items = useStore(state => state.items);
 	const getItems = useStore(state => state.getItems);
 	const addItems = useStore(state => state.addItems);
+	const deleteItem = useStore(state => state.deleteItem);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -30,7 +31,12 @@ export default function StyledForm() {
 							<label htmlFor="items" />
 							<input type="checkbox" name="items" />
 							<span>{item.item}</span>
-							<StyledButton type="button">
+							<StyledButton
+								type="button"
+								onClick={() => {
+									deleteItem(item._id);
+								}}
+							>
 								<Image
 									src="/trash.svg"
 									alt="An SVG of trash can"
