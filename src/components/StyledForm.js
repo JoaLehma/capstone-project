@@ -9,6 +9,7 @@ export default function StyledForm() {
 	const getItems = useStore(state => state.getItems);
 	const addItems = useStore(state => state.addItems);
 	const deleteItem = useStore(state => state.deleteItem);
+	const checkItem = useStore(state => state.checkItem);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -29,8 +30,22 @@ export default function StyledForm() {
 					return (
 						<StyledList key={item._id}>
 							<label htmlFor="items" />
-							<input type="checkbox" name="items" />
-							<span>{item.item}</span>
+							<input
+								type="checkbox"
+								name="items"
+								checked={item.isChecked}
+								onChange={() => {
+									checkItem(item._id, !item.isChecked);
+								}}
+							/>
+							<span
+								style={{
+									textDecoration: item.isChecked && 'line-through',
+									color: item.isChecked && 'lightgrey',
+								}}
+							>
+								{item.item}
+							</span>
 							<StyledButton
 								type="button"
 								onClick={() => {

@@ -41,19 +41,20 @@ const useStore = create(set => {
 			}
 		},
 
-		// deleteItem: async itemId => {
-		// 	console.log('delete item');
-		// 	try {
-		// 		const response = await fetch(`/api/${itemId}`, {
-		// 			method: 'DELETE',
-		// 		});
-		// 		const deletedItem = await response.json();
-		// 		set(() => ({items: deletedItem.items}));
-		// 		return deletedItem;
-		// 	} catch (error) {
-		// 		console.error(error);
-		// 	}
-		// },
+		checkItem: async (id, isChecked) => {
+			console.log('check item');
+			try {
+				const response = await fetch(`/api/${id}`, {
+					method: 'PUT',
+					body: JSON.stringify({isChecked}),
+				});
+				const result = await response.json();
+				set(() => ({items: result.items}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
 	};
 });
 
