@@ -10,6 +10,7 @@ export default function StyledForm() {
 	const addItems = useStore(state => state.addItems);
 	const deleteItem = useStore(state => state.deleteItem);
 	const checkItem = useStore(state => state.checkItem);
+	const falseFirst = items.sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -21,12 +22,11 @@ export default function StyledForm() {
 	useEffect(() => {
 		getItems();
 	}, [getItems]);
-	console.log(items);
 
 	return (
 		<>
 			<StyledlList role="list">
-				{items.map(item => {
+				{falseFirst.map(item => {
 					return (
 						<StyledList key={item._id}>
 							<label htmlFor="items" />
