@@ -1,7 +1,17 @@
+import {unstable_getServerSession} from 'next-auth/next';
+
 import {dbConnect} from '../../dbConnect';
 import Item from '../../models/itemModel';
 
+import {authOptions} from './auth/[...nextauth]';
+
 export default async function handler(request, response) {
+	const session = await unstable_getServerSession(request, response, authOptions);
+
+	if (!session) {
+		response.status(403).json({error: 'no-session'});
+	}
+
 	await dbConnect();
 
 	if (request.method === 'POST') {
