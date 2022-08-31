@@ -26,6 +26,35 @@ const useStore = create(set => {
 				console.error(error);
 			}
 		},
+
+		deleteItem: async id => {
+			console.log('delete items');
+			try {
+				const response = await fetch(`/api/${id}`, {
+					method: 'DELETE',
+				});
+				const result = await response.json();
+				set(() => ({items: result.items}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
+
+		checkItem: async (id, isChecked) => {
+			console.log('check item');
+			try {
+				const response = await fetch(`/api/${id}`, {
+					method: 'PUT',
+					body: JSON.stringify({isChecked}),
+				});
+				const result = await response.json();
+				set(() => ({items: result.items}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
 	};
 });
 
