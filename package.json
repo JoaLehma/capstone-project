@@ -23,9 +23,11 @@
     "mongoose": "^6.5.2",
     "nanoid": "4.0.0",
     "next": "12.2.4",
+    "next-auth": "^4.10.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "5.3.5",
+    "vercel": "^28.2.0",
     "zustand": "^4.0.0"
   },
   "devDependencies": {
