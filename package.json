@@ -19,6 +19,7 @@
     "toc": "npx markdown-toc@1 README.md -i"
   },
   "dependencies": {
+    "@next-auth/mongodb-adapter": "^1.0.4",
     "axios": "^0.27.2",
     "mongoose": "^6.5.2",
     "nanoid": "4.0.0",
