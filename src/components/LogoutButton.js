@@ -1,28 +1,18 @@
-import {signIn} from 'next-auth/react';
+import {useSession, signOut} from 'next-auth/react';
 import styled from 'styled-components';
-
-import StyledWrapper from './StyledWrapper';
-
-export function Login() {
-	return (
-		<>
-			<StyledWrapper>
-				<h1>just pack</h1>
-				<StyledLoginText>
-					never <br /> ever <br /> forget <br /> anything <br /> again!
-				</StyledLoginText>
-				<StyledLoginButton onClick={() => signIn()}>Sign in</StyledLoginButton>
-			</StyledWrapper>
-		</>
-	);
+export default function LogoutButton() {
+	const {data: session} = useSession();
+	if (session) {
+		return (
+			<>
+				Signed in as {session.user.email} <br />
+				<StyledLogoutButton onClick={() => signOut()}>Sign out</StyledLogoutButton>
+			</>
+		);
+	}
 }
 
-const StyledLoginText = styled.h2`
-	font-size: 60px;
-	text-align: center;
-`;
-
-const StyledLoginButton = styled.button`
+const StyledLogoutButton = styled.button`
 	display: inline-block;
 	position: relative;
 	box-sizing: border-box;

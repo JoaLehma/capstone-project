@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
-import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+
 export default function StyledForm() {
 	const items = useStore(state => state.items);
 	const getItems = useStore(state => state.getItems);
@@ -79,7 +80,7 @@ export default function StyledForm() {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
-			<LoginButton />
+			<LogoutButton />
 		</>
 	);
 }
