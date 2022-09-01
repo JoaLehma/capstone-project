@@ -10,29 +10,24 @@ export default async function handler(request, response) {
 	const session = await unstable_getServerSession(request, response, authOptions);
 
 	if (session) {
-		response.send({
-			content:
-				'This is protected content. You can access this content because you are signed in.',
-		});
+		if (request.method === 'POST') {
+			const data = JSON.parse(request.body);
+			await Item.create(data);
+			const items = await Item.find();
+			response.status(200).json({
+				message: 'item created',
+				items,
+			});
+		}
+		if (request.method === 'GET') {
+			const items = await Item.find();
+
+			response.status(200).json(items);
+		}
 	} else {
 		response.send({
 			error: 'You must be sign in to view the protected content on this page.',
 		});
 		response.status(403).json({error: 'no-session'});
-	}
-
-	if (request.method === 'POST') {
-		const data = JSON.parse(request.body);
-		await Item.create(data);
-		const items = await Item.find();
-		response.status(200).json({
-			message: 'item created',
-			items,
-		});
-	}
-	if (request.method === 'GET') {
-		const items = await Item.find();
-
-		response.status(200).json(items);
 	}
 }

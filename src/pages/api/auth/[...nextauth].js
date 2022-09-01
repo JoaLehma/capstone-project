@@ -3,8 +3,7 @@ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 
 import clientPromise from '../../../lib/mongodb';
-
-export default NextAuth({
+export const authOptions = {
 	providers: [
 		GithubProvider({
 			clientId: process.env.GITHUB_ID,
@@ -12,4 +11,10 @@ export default NextAuth({
 		}),
 	],
 	adapter: MongoDBAdapter(clientPromise),
-});
+	callbacks: {
+		async session({session, user}) {
+			return {...session, user: {...session.user, id: user.id}};
+		},
+	},
+};
+export default NextAuth(authOptions);
