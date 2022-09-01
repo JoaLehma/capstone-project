@@ -6,13 +6,20 @@ import Item from '../../models/itemModel';
 import {authOptions} from './auth/[...nextauth]';
 
 export default async function handler(request, response) {
+	await dbConnect();
 	const session = await unstable_getServerSession(request, response, authOptions);
 
-	if (!session) {
+	if (session) {
+		response.send({
+			content:
+				'This is protected content. You can access this content because you are signed in.',
+		});
+	} else {
+		response.send({
+			error: 'You must be sign in to view the protected content on this page.',
+		});
 		response.status(403).json({error: 'no-session'});
 	}
-
-	await dbConnect();
 
 	if (request.method === 'POST') {
 		const data = JSON.parse(request.body);

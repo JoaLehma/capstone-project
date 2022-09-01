@@ -6,7 +6,7 @@ const useStore = create(set => {
 		items: [],
 		getItems: async () => {
 			console.log('fetching items');
-			const response = await axios.get('/api/connect');
+			const response = await axios.get('/api/restricted');
 			const result = await response.data;
 
 			set(() => ({items: result}));
@@ -15,7 +15,7 @@ const useStore = create(set => {
 		addItems: async item => {
 			console.log('adding items');
 			try {
-				const response = await fetch('/api/connect', {
+				const response = await fetch('/api/restricted', {
 					method: 'POST',
 					body: JSON.stringify({item}),
 				});
