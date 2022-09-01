@@ -1,6 +1,7 @@
 import {useSession} from 'next-auth/react';
 import Head from 'next/head';
 
+import LoginButton from '../components/LoginButton';
 import StyledForm from '../components/StyledForm';
 import StyledWrapper from '../components/StyledWrapper';
 
@@ -19,5 +20,13 @@ export default function HomePage() {
 				</StyledWrapper>
 			</>
 		);
-	}
+	} else
+		return (
+			<>
+				<StyledWrapper>
+					<h1>just pack</h1>
+					<LoginButton />;
+				</StyledWrapper>
+			</>
+		);
 }
