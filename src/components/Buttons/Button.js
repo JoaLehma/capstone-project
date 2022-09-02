@@ -1,4 +1,5 @@
 import {useSession, signOut} from 'next-auth/react';
+import Image from 'next/image';
 import styled from 'styled-components';
 
 export function LogoutButton() {
@@ -11,6 +12,14 @@ export function LogoutButton() {
 			</>
 		);
 	}
+}
+
+export function Trashcan() {
+	return (
+		<StyledTrashcan>
+			<Image src="/trash.svg" alt="An SVG of trash can" width="16px" height="16px" />
+		</StyledTrashcan>
+	);
 }
 
 const StyledLogoutButton = styled.button`
@@ -42,5 +51,15 @@ const StyledLogoutButton = styled.button`
 		border-color: #008296;
 		outline: 0;
 		box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+	}
+`;
+
+const StyledTrashcan = styled.button`
+	margin-top: 5px;
+	transform: translate(0, -8%);
+	border: none;
+	background-color: transparent;
+	&:hover {
+		cursor: pointer;
 	}
 `;

@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+import {Trashcan} from './Buttons/Button';
+
 export default function StyledCategoryCard() {
 	return (
 		<Card>
 			<button>bookmark</button>
 			<h3>Mountainbike</h3>
 			<button>Add items</button>
-			<button>Delete</button>
+			<Trashcan />
 		</Card>
 	);
 }
