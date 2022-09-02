@@ -16,8 +16,9 @@ export default function StyledCategoryCard() {
 const Card = styled.article`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	width: 200px;
-	height: 100px;
+	height: fit-content;
 	padding: 10px;
 	border-width: 1px;
 	border-style: solid;
