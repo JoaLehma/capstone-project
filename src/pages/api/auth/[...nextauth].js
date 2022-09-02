@@ -16,5 +16,6 @@ export const authOptions = {
 			return {...session, user: {...session.user, id: user.id}};
 		},
 	},
+	secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions);
