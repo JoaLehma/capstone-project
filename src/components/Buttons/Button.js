@@ -1,6 +1,7 @@
 import {useSession, signOut} from 'next-auth/react';
 import styled from 'styled-components';
-export default function LogoutButton() {
+
+export function LogoutButton() {
 	const {data: session} = useSession();
 	if (session) {
 		return (

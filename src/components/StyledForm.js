@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
-import LogoutButton from './LogoutButton';
+import {LogoutButton} from './Buttons/Button';
 
 export default function StyledForm() {
 	const items = useStore(state => state.items);
