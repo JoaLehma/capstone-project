@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import {Trashcan} from './Buttons/Button';
-
 export default function StyledCategoryCard() {
 	return (
 		<Card>
@@ -16,7 +14,9 @@ export default function StyledCategoryCard() {
 			</Bookmark>
 			<CategoryName>Mountainbike</CategoryName>
 			<button>Add items</button>
-			<Trashcan />
+			<StyledTrashcan>
+				<Image src="/trash.svg" alt="An SVG of trash can" width="16px" height="16px" />
+			</StyledTrashcan>
 		</Card>
 	);
 }
@@ -40,6 +40,16 @@ const CategoryName = styled.h3`
 const Bookmark = styled.button`
 	align-self: flex-end;
 	margin-top: 5px;
+	border: none;
+	background-color: transparent;
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+const StyledTrashcan = styled.button`
+	margin-top: 5px;
+	transform: translate(0, -8%);
 	border: none;
 	background-color: transparent;
 	&:hover {
