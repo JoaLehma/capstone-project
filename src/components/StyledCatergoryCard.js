@@ -8,15 +8,17 @@ export default function StyledCategoryCard() {
 				<Image
 					src="/bookmark.svg"
 					alt="An SVG of an bookmark icon"
-					width="24px"
-					height="24px"
+					width="20px"
+					height="20px"
 				/>
 			</Bookmark>
 			<CategoryName>Mountainbike</CategoryName>
-			<button>Add items</button>
-			<StyledTrashcan>
-				<Image src="/trash.svg" alt="An SVG of trash can" width="16px" height="16px" />
-			</StyledTrashcan>
+			<ButtonWrapper>
+				<AddButton>Add items</AddButton>
+				<Trashcan>
+					<Image src="/trash.svg" alt="An SVG of trash can" width="20px" height="20px" />
+				</Trashcan>
+			</ButtonWrapper>
 		</Card>
 	);
 }
@@ -27,14 +29,14 @@ const Card = styled.article`
 	align-items: center;
 	width: 200px;
 	height: fit-content;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: 20px;
-	border-color: black;
+	margin-top: 20px;
+	border-radius: 10px;
+	background-color: #000;
 `;
 
 const CategoryName = styled.h3`
 	margin: 5px;
+	color: white;
 `;
 
 const Bookmark = styled.button`
@@ -47,11 +49,30 @@ const Bookmark = styled.button`
 	}
 `;
 
-const StyledTrashcan = styled.button`
-	margin-top: 5px;
-	transform: translate(0, -8%);
+const Trashcan = styled.button`
+	margin: 1px;
 	border: none;
 	background-color: transparent;
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+const ButtonWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	width: 200px;
+`;
+
+const AddButton = styled.button`
+	margin: 10px;
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: #fff;
+	background-color: transparent;
+	color: #fff;
+	font-family: 'Rajdhani', sans-serif;
 	&:hover {
 		cursor: pointer;
 	}
