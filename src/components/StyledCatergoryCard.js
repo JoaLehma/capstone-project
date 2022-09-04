@@ -1,28 +1,20 @@
-import Image from 'next/image';
 import styled from 'styled-components';
+
+import {LogoutButton} from './StyledLogoutButton';
+import SVG from './svgCollection';
 
 export default function StyledCategoryCard() {
 	return (
 		<>
 			<Card>
 				<Bookmark>
-					<Image
-						src="/bookmark.svg"
-						alt="An SVG of an bookmark icon"
-						width="20px"
-						height="20px"
-					/>
+					<SVG size="20px" variant="bookmark" color="white" />
 				</Bookmark>
 				<CategoryName>Mountainbike</CategoryName>
 				<ButtonWrapper>
 					<AddButton>Add items</AddButton>
 					<Trashcan>
-						<Image
-							src="/trash.svg"
-							alt="An SVG of trash can"
-							width="20px"
-							height="20px"
-						/>
+						<SVG size="20px" variant="trash" color="white" />
 					</Trashcan>
 				</ButtonWrapper>
 			</Card>
@@ -41,6 +33,7 @@ export default function StyledCategoryCard() {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
+			<LogoutButton />
 		</>
 	);
 }

@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
 import {LogoutButton} from './StyledLogoutButton';
+import SVG from './svgCollection';
 
 export default function StyledForm() {
 	const items = useStore(state => state.items);
@@ -54,12 +54,7 @@ export default function StyledForm() {
 									deleteItem(item._id);
 								}}
 							>
-								<Image
-									src="/trash.svg"
-									alt="An SVG of trash can"
-									width="16px"
-									height="16px"
-								/>
+								<SVG size="16px" variant="trash" color="white" fill="white" />
 							</StyledButton>
 						</StyledList>
 					);
