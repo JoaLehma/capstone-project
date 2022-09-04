@@ -54,28 +54,30 @@ export default function StyledForm() {
 									deleteItem(item._id);
 								}}
 							>
-								<SVG size="16px" variant="trash" color="white" fill="white" />
+								<SVG size="16px" variant="trash" color="grey" fill="white" />
 							</StyledButton>
 						</StyledList>
 					);
 				})}
 			</StyledlList>
-			<form aria-label="Add an item" onSubmit={handleSubmit}>
-				<label>
-					Item:
-					<StyledInput
-						type="text"
-						id="itemInput"
-						required
-						name="itemInput"
-						autoComplete="off"
-						minLength="3"
-						placeholder="don't forget me"
-					/>
-				</label>
-				<button type="submit">Submit</button>
-			</form>
-			<LogoutButton />
+			<FormWrapper>
+				<form aria-label="Add an item" onSubmit={handleSubmit}>
+					<label>
+						Item:
+						<StyledInput
+							type="text"
+							id="itemInput"
+							required
+							name="itemInput"
+							autoComplete="off"
+							minLength="3"
+							placeholder="don't forget me"
+						/>
+					</label>
+					<button type="submit">Submit</button>
+				</form>
+				<LogoutButton />
+			</FormWrapper>
 		</>
 	);
 }
@@ -101,4 +103,15 @@ const StyledButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+const FormWrapper = styled.div`
+	display: flex;
+	position: fixed;
+	top: 480px;
+	flex-direction: column;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	background-color: white;
 `;

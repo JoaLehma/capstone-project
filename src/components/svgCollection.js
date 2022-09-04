@@ -10,7 +10,7 @@ const svgCollection = {
 	list: 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z',
 };
 
-const SVG = ({size = '24px', color = 'currentColor', fill = 'currentColor', variant}) => {
+const SVG = ({size = '24px', color = 'currentColor', fill = 'currentFill', variant}) => {
 	return (
 		<svg style={{width: size, height: size}} viewBox="0 0 24 24">
 			<path stroke={color} fill={fill} d={svgCollection[variant]} />

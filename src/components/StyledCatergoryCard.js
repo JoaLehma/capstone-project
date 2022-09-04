@@ -18,22 +18,24 @@ export default function StyledCategoryCard() {
 					</Trashcan>
 				</ButtonWrapper>
 			</Card>
-			<form aria-label="Create an Category">
-				<label>
-					Category:
-					<StyledInput
-						type="text"
-						id="categoryInput"
-						required
-						name="categoryInput"
-						autoComplete="off"
-						minLength="3"
-						placeholder="create an item-card"
-					/>
-				</label>
-				<button type="submit">Submit</button>
-			</form>
-			<LogoutButton />
+			<FormWrapper>
+				<form aria-label="Create an Category">
+					<label>
+						Category:
+						<StyledInput
+							type="text"
+							id="categoryInput"
+							required
+							name="categoryInput"
+							autoComplete="off"
+							minLength="3"
+							placeholder="create an item-card"
+						/>
+					</label>
+					<button type="submit">Submit</button>
+				</form>
+				<LogoutButton />
+			</FormWrapper>
 		</>
 	);
 }
@@ -96,4 +98,15 @@ const AddButton = styled.button`
 
 const StyledInput = styled.input`
 	margin: 20px 5px 5px 5px;
+`;
+
+const FormWrapper = styled.div`
+	display: flex;
+	position: fixed;
+	top: 480px;
+	flex-direction: column;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	background-color: white;
 `;
