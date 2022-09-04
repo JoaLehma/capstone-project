@@ -3,23 +3,45 @@ import styled from 'styled-components';
 
 export default function StyledCategoryCard() {
 	return (
-		<Card>
-			<Bookmark>
-				<Image
-					src="/bookmark.svg"
-					alt="An SVG of an bookmark icon"
-					width="20px"
-					height="20px"
-				/>
-			</Bookmark>
-			<CategoryName>Mountainbike</CategoryName>
-			<ButtonWrapper>
-				<AddButton>Add items</AddButton>
-				<Trashcan>
-					<Image src="/trash.svg" alt="An SVG of trash can" width="20px" height="20px" />
-				</Trashcan>
-			</ButtonWrapper>
-		</Card>
+		<>
+			<Card>
+				<Bookmark>
+					<Image
+						src="/bookmark.svg"
+						alt="An SVG of an bookmark icon"
+						width="20px"
+						height="20px"
+					/>
+				</Bookmark>
+				<CategoryName>Mountainbike</CategoryName>
+				<ButtonWrapper>
+					<AddButton>Add items</AddButton>
+					<Trashcan>
+						<Image
+							src="/trash.svg"
+							alt="An SVG of trash can"
+							width="20px"
+							height="20px"
+						/>
+					</Trashcan>
+				</ButtonWrapper>
+			</Card>
+			<form aria-label="Create an Category">
+				<label>
+					Category:
+					<StyledInput
+						type="text"
+						id="categoryInput"
+						required
+						name="categoryInput"
+						autoComplete="off"
+						minLength="3"
+						placeholder="create an item-card"
+					/>
+				</label>
+				<button type="submit">Submit</button>
+			</form>
+		</>
 	);
 }
 
@@ -35,7 +57,7 @@ const Card = styled.article`
 `;
 
 const CategoryName = styled.h3`
-	margin: 5px;
+	margin: 10px;
 	color: white;
 `;
 
@@ -50,7 +72,8 @@ const Bookmark = styled.button`
 `;
 
 const Trashcan = styled.button`
-	margin: 1px;
+	margin-right: 1px;
+	margin-bottom: -3px;
 	border: none;
 	background-color: transparent;
 	&:hover {
@@ -76,4 +99,8 @@ const AddButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+const StyledInput = styled.input`
+	margin: 20px 5px 5px 5px;
 `;

@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import {Login} from '../components/Login';
 import StyledCategoryCard from '../components/StyledCatergoryCard';
-import StyledForm from '../components/StyledForm';
 import StyledWrapper from '../components/StyledWrapper';
 
 export default function HomePage() {
@@ -17,7 +16,6 @@ export default function HomePage() {
 				</Head>
 				<StyledWrapper>
 					<h1>just pack</h1>
-					<StyledForm />
 					<StyledCategoryCard />
 				</StyledWrapper>
 			</>

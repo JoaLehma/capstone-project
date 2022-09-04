@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import './categoryModel';
+
 const {Schema} = mongoose;
 
 const cardSchema = new Schema({
