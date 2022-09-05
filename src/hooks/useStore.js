@@ -56,8 +56,17 @@ const useStore = create(set => {
 				console.error(error);
 			}
 		},
+
+		getCategories: async () => {
+			console.log('fetching categories');
+			const response = await axios.get('/api/category');
+			const result = await response.data;
+
+			set(() => ({categories: result}));
+		},
+
 		addCategories: async item => {
-			console.log('adding items');
+			console.log('adding categories');
 			try {
 				const response = await fetch('/api/category', {
 					method: 'POST',
