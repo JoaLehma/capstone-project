@@ -3,6 +3,7 @@ import create from 'zustand';
 
 const useStore = create(set => {
 	return {
+		categories: [],
 		items: [],
 		getItems: async () => {
 			console.log('fetching items');
@@ -50,6 +51,20 @@ const useStore = create(set => {
 				});
 				const result = await response.json();
 				set(() => ({items: result.items}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
+		addCategories: async item => {
+			console.log('adding items');
+			try {
+				const response = await fetch('/api/category', {
+					method: 'POST',
+					body: JSON.stringify({item}),
+				});
+				const result = await response.json();
+				set(() => ({categories: result.categories}));
 				return result;
 			} catch (error) {
 				console.error(error);
