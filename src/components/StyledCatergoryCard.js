@@ -10,6 +10,7 @@ export default function StyledCategoryCard() {
 	const categories = useStore(state => state.categories);
 	const getCategories = useStore(state => state.getCategories);
 	const addCategories = useStore(state => state.addCategories);
+	const deleteCategory = useStore(state => state.deleteCategory);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -34,7 +35,12 @@ export default function StyledCategoryCard() {
 							<CategoryName>{category.category}</CategoryName>
 							<ButtonWrapper>
 								<AddButton>Add/Edit items</AddButton>
-								<Trashcan>
+								<Trashcan
+									type="button"
+									onClick={() => {
+										deleteCategory(category._id);
+									}}
+								>
 									<SVG size="20px" variant="trash" color="white" />
 								</Trashcan>
 							</ButtonWrapper>

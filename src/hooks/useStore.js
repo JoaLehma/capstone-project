@@ -59,7 +59,7 @@ const useStore = create(set => {
 
 		getCategories: async () => {
 			console.log('fetching categories');
-			const response = await axios.get('/api/category');
+			const response = await axios.get('/api/category/category');
 			const result = await response.data;
 
 			set(() => ({categories: result}));
@@ -68,9 +68,23 @@ const useStore = create(set => {
 		addCategories: async category => {
 			console.log('adding categories');
 			try {
-				const response = await fetch('/api/category', {
+				const response = await fetch('/api/category/category', {
 					method: 'POST',
 					body: JSON.stringify({category}),
+				});
+				const result = await response.json();
+				set(() => ({categories: result.categories}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
+
+		deleteCategory: async id => {
+			console.log('delete categories');
+			try {
+				const response = await fetch(`/api/category/${id}`, {
+					method: 'DELETE',
 				});
 				const result = await response.json();
 				set(() => ({categories: result.categories}));

@@ -1,9 +1,8 @@
 import {unstable_getServerSession} from 'next-auth/next';
 
-import {dbConnect} from '../../dbConnect';
-import Category from '../../models/categoryModel';
-
-import {authOptions} from './auth/[...nextauth]';
+import {dbConnect} from '../../../dbConnect';
+import Category from '../../../models/categoryModel';
+import {authOptions} from '../auth/[...nextauth]';
 
 export default async function handler(request, response) {
 	await dbConnect();
