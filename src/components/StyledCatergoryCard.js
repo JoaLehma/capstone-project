@@ -12,7 +12,7 @@ export default function StyledCategoryCard() {
 				</Bookmark>
 				<CategoryName>Mountainbike</CategoryName>
 				<ButtonWrapper>
-					<AddButton>Add items</AddButton>
+					<AddButton>Add/Edit items</AddButton>
 					<Trashcan>
 						<SVG size="20px" variant="trash" color="white" />
 					</Trashcan>
@@ -97,13 +97,13 @@ const AddButton = styled.button`
 `;
 
 const StyledInput = styled.input`
-	margin: 20px 5px 5px 5px;
+	margin: 5px;
 `;
 
 const FormWrapper = styled.div`
 	display: flex;
 	position: fixed;
-	top: 480px;
+	top: 500px;
 	flex-direction: column;
 	align-items: center;
 	width: fit-content;

@@ -6,6 +6,6 @@ const cardSchema = new Schema({
 	isBookmarked: {type: Boolean, default: false},
 });
 
-const Catergory = mongoose?.models?.Category || mongoose.model('Category', cardSchema);
+const Category = mongoose?.models?.Category || mongoose.model('Category', cardSchema);
 
-export default Catergory;
+export default Category;

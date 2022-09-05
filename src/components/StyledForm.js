@@ -108,7 +108,7 @@ const StyledButton = styled.button`
 const FormWrapper = styled.div`
 	display: flex;
 	position: fixed;
-	top: 480px;
+	top: 500px;
 	flex-direction: column;
 	align-items: center;
 	width: fit-content;
