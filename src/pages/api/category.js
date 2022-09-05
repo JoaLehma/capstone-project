@@ -13,16 +13,16 @@ export default async function handler(request, response) {
 		if (request.method === 'POST') {
 			const data = JSON.parse(request.body);
 			await Category.create(data);
-			const items = await Category.find();
+			const categories = await Category.find();
 			response.status(200).json({
-				message: 'item created',
-				items,
+				message: 'category created',
+				categories,
 			});
 		}
 		if (request.method === 'GET') {
-			const items = await Category.find();
+			const categories = await Category.find();
 
-			response.status(200).json(items);
+			response.status(200).json(categories);
 		}
 	} else {
 		response.send({

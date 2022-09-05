@@ -65,12 +65,12 @@ const useStore = create(set => {
 			set(() => ({categories: result}));
 		},
 
-		addCategories: async item => {
+		addCategories: async category => {
 			console.log('adding categories');
 			try {
 				const response = await fetch('/api/category', {
 					method: 'POST',
-					body: JSON.stringify({item}),
+					body: JSON.stringify({category}),
 				});
 				const result = await response.json();
 				set(() => ({categories: result.categories}));

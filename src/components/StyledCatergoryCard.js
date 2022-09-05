@@ -1,25 +1,49 @@
+import {useEffect} from 'react';
 import styled from 'styled-components';
+
+import useStore from '../hooks/useStore';
 
 import {LogoutButton} from './StyledLogoutButton';
 import SVG from './svgCollection';
 
 export default function StyledCategoryCard() {
+	const categories = useStore(state => state.categories);
+	const getCategories = useStore(state => state.getCategories);
+	const addCategories = useStore(state => state.addCategories);
+
+	async function handleSubmit(event) {
+		event.preventDefault();
+		const category = event.target.elements.categoryInput.value;
+		addCategories(category);
+		event.target.reset();
+	}
+
+	useEffect(() => {
+		getCategories();
+	}, [getCategories]);
+
 	return (
 		<>
-			<Card>
-				<Bookmark>
-					<SVG size="20px" variant="bookmark" color="white" />
-				</Bookmark>
-				<CategoryName>Mountainbike</CategoryName>
-				<ButtonWrapper>
-					<AddButton>Add/Edit items</AddButton>
-					<Trashcan>
-						<SVG size="20px" variant="trash" color="white" />
-					</Trashcan>
-				</ButtonWrapper>
-			</Card>
+			<StyledlList role="list">
+				{categories.map(category => {
+					return (
+						<Card key={category._id}>
+							<Bookmark>
+								<SVG size="20px" variant="bookmark" color="white" />
+							</Bookmark>
+							<CategoryName>{category.category}</CategoryName>
+							<ButtonWrapper>
+								<AddButton>Add/Edit items</AddButton>
+								<Trashcan>
+									<SVG size="20px" variant="trash" color="white" />
+								</Trashcan>
+							</ButtonWrapper>
+						</Card>
+					);
+				})}
+			</StyledlList>
 			<FormWrapper>
-				<form aria-label="Create an Category">
+				<form aria-label="Create an Category" onSubmit={handleSubmit}>
 					<label>
 						Category:
 						<StyledInput
@@ -39,6 +63,10 @@ export default function StyledCategoryCard() {
 		</>
 	);
 }
+
+const StyledlList = styled.ul`
+	list-style: none;
+`;
 
 const Card = styled.article`
 	display: flex;
