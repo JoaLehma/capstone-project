@@ -32,8 +32,8 @@ export default function CategoryCard() {
 			<StyledlList role="list">
 				{categories.map(category => {
 					return (
-						<Card key={category._id}>
-							<Bookmark
+						<StyledCard key={category._id}>
+							<StyledBookmarkButton
 								onClick={() => {
 									bookmarkCategory(category._id, !category.isBookmarked);
 								}}
@@ -44,10 +44,10 @@ export default function CategoryCard() {
 									color="white"
 									fill={category.isBookmarked ? 'white' : 'transparent'}
 								/>
-							</Bookmark>
-							<CategoryName>{category.category}</CategoryName>
-							<ButtonWrapper>
-								<AddButton
+							</StyledBookmarkButton>
+							<StyledCategoryName>{category.category}</StyledCategoryName>
+							<StyledButtonWrapper>
+								<StyledAddButton
 									type="button"
 									onClick={() => {
 										router.push({
@@ -55,22 +55,22 @@ export default function CategoryCard() {
 										});
 									}}
 								>
-									Add/Edit items
-								</AddButton>
-								<Trashcan
+									Add items
+								</StyledAddButton>
+								<StyledTrashcanButton
 									type="button"
 									onClick={() => {
 										deleteCategory(category._id);
 									}}
 								>
 									<SVG size="20px" variant="trash" color="white" />
-								</Trashcan>
-							</ButtonWrapper>
-						</Card>
+								</StyledTrashcanButton>
+							</StyledButtonWrapper>
+						</StyledCard>
 					);
 				})}
 			</StyledlList>
-			<FormWrapper>
+			<StyledFormWrapper>
 				<form aria-label="Create an Category" onSubmit={handleSubmit}>
 					<label>
 						Category:
@@ -87,7 +87,7 @@ export default function CategoryCard() {
 					<button type="submit">Submit</button>
 				</form>
 				<LogoutButton />
-			</FormWrapper>
+			</StyledFormWrapper>
 		</>
 	);
 }
@@ -100,7 +100,7 @@ const StyledlList = styled.ul`
 	list-style: none;
 `;
 
-const Card = styled.article`
+const StyledCard = styled.article`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -111,12 +111,12 @@ const Card = styled.article`
 	background-color: #000;
 `;
 
-const CategoryName = styled.h3`
+const StyledCategoryName = styled.h3`
 	margin: 10px;
 	color: white;
 `;
 
-const Bookmark = styled.button`
+const StyledBookmarkButton = styled.button`
 	align-self: flex-end;
 	margin-top: 5px;
 	border: none;
@@ -126,7 +126,7 @@ const Bookmark = styled.button`
 	}
 `;
 
-const Trashcan = styled.button`
+const StyledTrashcanButton = styled.button`
 	margin-right: 1px;
 	margin-bottom: -3px;
 	border: none;
@@ -136,13 +136,13 @@ const Trashcan = styled.button`
 	}
 `;
 
-const ButtonWrapper = styled.div`
+const StyledButtonWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 200px;
 `;
 
-const AddButton = styled.button`
+const StyledAddButton = styled.button`
 	margin: 10px;
 	border: solid;
 	border-width: 1px;
@@ -160,7 +160,7 @@ const StyledInput = styled.input`
 	margin: 5px;
 `;
 
-const FormWrapper = styled.div`
+const StyledFormWrapper = styled.div`
 	display: flex;
 	position: fixed;
 	top: 500px;
