@@ -8,6 +8,7 @@ const svgCollection = {
 	homeFilled:
 		'M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z',
 	list: 'M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z',
+	return: 'M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3',
 };
 
 const SVG = ({size = '24px', color = 'currentColor', fill = 'currentFill', variant}) => {
