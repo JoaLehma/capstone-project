@@ -1,3 +1,4 @@
+import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import styled from 'styled-components';
 
@@ -6,7 +7,8 @@ import useStore from '../hooks/useStore';
 import {LogoutButton} from './StyledLogoutButton';
 import SVG from './svgCollection';
 
-export default function StyledCategoryCard() {
+export default function CategoryCard() {
+	const router = useRouter();
 	const categories = useStore(state => state.categories);
 	const getCategories = useStore(state => state.getCategories);
 	const addCategories = useStore(state => state.addCategories);
@@ -22,6 +24,7 @@ export default function StyledCategoryCard() {
 	useEffect(() => {
 		getCategories();
 	}, [getCategories]);
+	console.log(categories);
 
 	return (
 		<>
@@ -34,7 +37,16 @@ export default function StyledCategoryCard() {
 							</Bookmark>
 							<CategoryName>{category.category}</CategoryName>
 							<ButtonWrapper>
-								<AddButton>Add/Edit items</AddButton>
+								<AddButton
+									type="button"
+									onClick={() => {
+										router.push({
+											pathname: `category/${category.category}`,
+										});
+									}}
+								>
+									Add/Edit items
+								</AddButton>
 								<Trashcan
 									type="button"
 									onClick={() => {

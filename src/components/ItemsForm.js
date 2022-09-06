@@ -6,7 +6,7 @@ import useStore from '../hooks/useStore';
 import {LogoutButton} from './StyledLogoutButton';
 import SVG from './svgCollection';
 
-export default function StyledForm() {
+export default function ItemsForm() {
 	const items = useStore(state => state.items);
 	const getItems = useStore(state => state.getItems);
 	const addItems = useStore(state => state.addItems);

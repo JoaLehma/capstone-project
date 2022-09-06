@@ -1,6 +1,8 @@
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 
+import ItemsForm from '../../components/ItemsForm';
+import StyledWrapper from '../../components/StyledWrapper';
 import useStore from '../../hooks/useStore';
 
 export default function CategoryPage() {
@@ -19,7 +21,14 @@ export default function CategoryPage() {
 			{categories
 				.filter(category => category.category === router.query.category)
 				.map(category => {
-					return <p key={category._id}>{category.category}</p>;
+					return (
+						<>
+							<StyledWrapper>
+								<h2>{category.category}</h2>
+								<ItemsForm />
+							</StyledWrapper>
+						</>
+					);
 				})}
 		</>
 	);

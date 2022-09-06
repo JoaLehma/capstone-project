@@ -1,9 +1,9 @@
 import {useSession} from 'next-auth/react';
 import Head from 'next/head';
 
+import CategoryCard from '../components/CatergoryCard';
 import Layout from '../components/Layout';
 import {Login} from '../components/Login';
-import StyledCategoryCard from '../components/StyledCatergoryCard';
 import StyledWrapper from '../components/StyledWrapper';
 
 export default function HomePage() {
@@ -18,7 +18,7 @@ export default function HomePage() {
 					</Head>
 					<StyledWrapper>
 						<h1>just pack</h1>
-						<StyledCategoryCard />
+						<CategoryCard />
 					</StyledWrapper>
 				</Layout>
 			</>
