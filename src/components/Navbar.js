@@ -26,7 +26,7 @@ export default function Navbar() {
 						<Link href="/packlist">
 							<a>
 								<SVG
-									variant="list"
+									variant="bookmark"
 									size="40px"
 									color="black"
 									fill={router.pathname === '/packlist' ? 'black' : 'white'}

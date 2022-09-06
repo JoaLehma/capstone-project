@@ -93,6 +93,10 @@ export default function CategoryCard() {
 }
 
 const StyledlList = styled.ul`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0;
 	list-style: none;
 `;
 
@@ -163,6 +167,6 @@ const FormWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: fit-content;
-	height: fit-content;
+	height: 300px;
 	background-color: white;
 `;

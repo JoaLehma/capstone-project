@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	body {
 		margin: 0;
+		margin-bottom: 170px;
 		font-family: 'Rajdhani', sans-serif;
 		font-size: 1rem;
 		font-weight: 400;
