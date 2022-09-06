@@ -13,6 +13,7 @@ export default function CategoryCard() {
 	const getCategories = useStore(state => state.getCategories);
 	const addCategories = useStore(state => state.addCategories);
 	const deleteCategory = useStore(state => state.deleteCategory);
+	const bookmarkCategory = useStore(state => state.bookmarkCategory);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -32,8 +33,17 @@ export default function CategoryCard() {
 				{categories.map(category => {
 					return (
 						<Card key={category._id}>
-							<Bookmark>
-								<SVG size="20px" variant="bookmark" color="white" />
+							<Bookmark
+								onClick={() => {
+									bookmarkCategory(category._id, !category.isBookmarked);
+								}}
+							>
+								<SVG
+									size="20px"
+									variant="bookmark"
+									color="white"
+									fill={category.isBookmarked ? 'white' : 'transparent'}
+								/>
 							</Bookmark>
 							<CategoryName>{category.category}</CategoryName>
 							<ButtonWrapper>

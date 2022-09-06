@@ -11,8 +11,6 @@ export default function CategoryPage() {
 	const categories = useStore(state => state.categories);
 	const getCategories = useStore(state => state.getCategories);
 
-	console.log(categories);
-
 	useEffect(() => {
 		getCategories();
 	}, [getCategories]);

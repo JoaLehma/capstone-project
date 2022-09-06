@@ -15,7 +15,6 @@ const useStore = create(set => {
 
 		addItems: async (item, category) => {
 			console.log('adding items');
-			console.log(category);
 			try {
 				const response = await fetch('/api/restricted', {
 					method: 'POST',
@@ -86,6 +85,21 @@ const useStore = create(set => {
 			try {
 				const response = await fetch(`/api/category/${id}`, {
 					method: 'DELETE',
+				});
+				const result = await response.json();
+				set(() => ({categories: result.categories}));
+				return result;
+			} catch (error) {
+				console.error(error);
+			}
+		},
+
+		bookmarkCategory: async (id, isBookmarked) => {
+			console.log('bookmark category');
+			try {
+				const response = await fetch(`/api/category/${id}`, {
+					method: 'PUT',
+					body: JSON.stringify({isBookmarked}),
 				});
 				const result = await response.json();
 				set(() => ({categories: result.categories}));
