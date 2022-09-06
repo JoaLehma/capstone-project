@@ -13,12 +13,13 @@ const useStore = create(set => {
 			set(() => ({items: result}));
 		},
 
-		addItems: async item => {
+		addItems: async (item, category) => {
 			console.log('adding items');
+			console.log(category);
 			try {
 				const response = await fetch('/api/restricted', {
 					method: 'POST',
-					body: JSON.stringify({item}),
+					body: JSON.stringify({item, category}),
 				});
 				const result = await response.json();
 				set(() => ({items: result.items}));

@@ -25,7 +25,7 @@ export default function CategoryPage() {
 						<>
 							<StyledWrapper>
 								<h2>{category.category}</h2>
-								<ItemsForm />
+								<ItemsForm category={category.category} />
 							</StyledWrapper>
 						</>
 					);

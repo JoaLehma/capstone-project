@@ -6,7 +6,7 @@ import useStore from '../hooks/useStore';
 import {LogoutButton} from './StyledLogoutButton';
 import SVG from './svgCollection';
 
-export default function ItemsForm() {
+export default function ItemsForm(category) {
 	const items = useStore(state => state.items);
 	const getItems = useStore(state => state.getItems);
 	const addItems = useStore(state => state.addItems);
@@ -17,7 +17,7 @@ export default function ItemsForm() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const item = event.target.elements.itemInput.value;
-		addItems(item);
+		addItems(item, category.category);
 		event.target.reset();
 	}
 
@@ -28,37 +28,39 @@ export default function ItemsForm() {
 	return (
 		<>
 			<StyledlList role="list">
-				{falseFirst.map(item => {
-					return (
-						<StyledList key={item._id}>
-							<label htmlFor="items" />
-							<input
-								type="checkbox"
-								name="items"
-								checked={item.isChecked}
-								onChange={() => {
-									checkItem(item._id, !item.isChecked);
-								}}
-							/>
-							<span
-								style={{
-									textDecoration: item.isChecked && 'line-through',
-									color: item.isChecked && 'lightgrey',
-								}}
-							>
-								{item.item}
-							</span>
-							<StyledButton
-								type="button"
-								onClick={() => {
-									deleteItem(item._id);
-								}}
-							>
-								<SVG size="16px" variant="trash" color="grey" fill="white" />
-							</StyledButton>
-						</StyledList>
-					);
-				})}
+				{falseFirst
+					.filter(item => item.category === category.category)
+					.map(item => {
+						return (
+							<StyledList key={item._id}>
+								<label htmlFor="items" />
+								<input
+									type="checkbox"
+									name="items"
+									checked={item.isChecked}
+									onChange={() => {
+										checkItem(item._id, !item.isChecked);
+									}}
+								/>
+								<span
+									style={{
+										textDecoration: item.isChecked && 'line-through',
+										color: item.isChecked && 'lightgrey',
+									}}
+								>
+									{item.item}
+								</span>
+								<StyledButton
+									type="button"
+									onClick={() => {
+										deleteItem(item._id);
+									}}
+								>
+									<SVG size="16px" variant="trash" color="grey" fill="white" />
+								</StyledButton>
+							</StyledList>
+						);
+					})}
 			</StyledlList>
 			<FormWrapper>
 				<form aria-label="Add an item" onSubmit={handleSubmit}>
