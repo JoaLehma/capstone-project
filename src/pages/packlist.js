@@ -96,7 +96,10 @@ export default function HomePage() {
 								category.isBookmarked
 									? bookmarkCategory(category._id, !category.isBookmarked)
 									: ''
-							);
+							),
+								items.filter(item =>
+									item.isChecked ? checkItem(item._id, !item.isChecked) : ''
+								);
 						}}
 					>
 						reset
