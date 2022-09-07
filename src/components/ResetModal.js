@@ -30,5 +30,5 @@ const StyledArticle = styled.article`
 const StyledDiv = styled.div`
 	display: flex;
 	justify-content: space-around;
-	padding: 0 20px 0 20px;
+	padding: 0 110px 0 110px;
 `;

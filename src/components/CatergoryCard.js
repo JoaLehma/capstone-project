@@ -100,6 +100,7 @@ const StyledlList = styled.ul`
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
+	margin-top: 70px;
 	padding: 0;
 	list-style: none;
 `;

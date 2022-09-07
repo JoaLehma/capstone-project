@@ -162,5 +162,5 @@ const StyledDiv = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-content: center;
-	width: 50%;
+	width: 35%;
 `;

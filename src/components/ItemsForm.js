@@ -78,6 +78,7 @@ const StyledList = styled.ul`
 const StyledLi = styled.li`
 	display: flex;
 	align-items: center;
+	margin-right: 20px;
 `;
 
 const StyledTrashButton = styled.button`

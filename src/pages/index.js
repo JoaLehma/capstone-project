@@ -4,6 +4,7 @@ import Head from 'next/head';
 import CategoryCard from '../components/CatergoryCard';
 import Layout from '../components/Layout';
 import {Login} from '../components/Login';
+import StyledHeadline from '../components/StyledHeadline';
 import StyledWrapper from '../components/StyledWrapper';
 
 export default function HomePage() {
@@ -17,7 +18,7 @@ export default function HomePage() {
 						<meta key="description" name="description" content="This is my project" />
 					</Head>
 					<StyledWrapper>
-						<h1>just pack</h1>
+						<StyledHeadline>just pack</StyledHeadline>
 						<CategoryCard />
 					</StyledWrapper>
 				</Layout>
