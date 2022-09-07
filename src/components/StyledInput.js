@@ -15,7 +15,6 @@ const StyledInput = styled.input`
 	font-family: 'Rajdhani', sans-serif;
 	font-size: 13px;
 	line-height: 29px;
-	text-align: center;
 	text-decoration: none;
 	vertical-align: middle;
 `;
