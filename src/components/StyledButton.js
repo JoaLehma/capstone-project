@@ -34,6 +34,7 @@ const StyledButton = styled.button`
 		variant === 'return' &&
 		css`
 			width: 50px;
+			padding-top 7px;
 		`}
 
 	${({variant}) =>

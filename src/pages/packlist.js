@@ -39,7 +39,7 @@ export default function HomePage() {
 							.filter(category => category.isBookmarked)
 							.map(category => {
 								return (
-									<div key={category._id} style={{width: '50%'}}>
+									<StyledDiv key={category._id}>
 										<h3>{category.category}</h3>
 										{items
 											.filter(item => item.category === category.category)
@@ -85,7 +85,7 @@ export default function HomePage() {
 													</StyledLi>
 												);
 											})}
-									</div>
+									</StyledDiv>
 								);
 							})}
 					</StyledWrapper>
@@ -136,4 +136,11 @@ const StyledButtonWrapper = styled.div`
 	width: 375px;
 	height: 130px;
 	background-color: white;
+`;
+
+const StyledDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	width: 50%;
 `;
