@@ -89,21 +89,23 @@ export default function HomePage() {
 								);
 							})}
 					</StyledWrapper>
-					<StyledButton
-						variant="reset"
-						onClick={() => {
-							categories.filter(category =>
-								category.isBookmarked
-									? bookmarkCategory(category._id, !category.isBookmarked)
-									: ''
-							),
-								items.filter(item =>
-									item.isChecked ? checkItem(item._id, !item.isChecked) : ''
-								);
-						}}
-					>
-						reset
-					</StyledButton>
+					<StyledButtonWrapper>
+						<StyledButton
+							variant="reset"
+							onClick={() => {
+								categories.filter(category =>
+									category.isBookmarked
+										? bookmarkCategory(category._id, !category.isBookmarked)
+										: ''
+								),
+									items.filter(item =>
+										item.isChecked ? checkItem(item._id, !item.isChecked) : ''
+									);
+							}}
+						>
+							reset
+						</StyledButton>
+					</StyledButtonWrapper>
 				</Layout>
 			</>
 		);
@@ -123,4 +125,15 @@ const StyledTrashButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+const StyledButtonWrapper = styled.div`
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	flex-direction: column;
+	align-items: center;
+	width: 375px;
+	height: 130px;
+	background-color: white;
 `;

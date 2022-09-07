@@ -52,6 +52,7 @@ const StyledButton = styled.button`
 		variant === 'reset' &&
 		css`
 			width: 75px;
+			margin-top: 15px;
 		`}
 `;
 

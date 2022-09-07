@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
+import styled from 'styled-components';
 
 import ItemsForm from '../../components/ItemsForm';
 import StyledButton from '../../components/StyledButton';
@@ -24,18 +25,18 @@ export default function CategoryPage() {
 				.map(category => {
 					return (
 						<>
-							<StyledWrapper>
+							<StyledWrapper key={category._id}>
 								<h2>{category.category}</h2>
 								<StyledButton variant="return">
 									<Link href="/">
-										<a>
+										<StyledAnchor>
 											<SVG
 												variant="return"
 												size="24px"
 												color="black"
 												fill="transparent"
 											/>
-										</a>
+										</StyledAnchor>
 									</Link>
 								</StyledButton>
 								<ItemsForm category={category.category} />
@@ -46,3 +47,7 @@ export default function CategoryPage() {
 		</>
 	);
 }
+
+const StyledAnchor = styled.a`
+	text-decoration: none;
+`;
