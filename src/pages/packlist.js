@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Layout from '../components/Layout';
 import {Login} from '../components/Login';
+import StyledButton from '../components/StyledButton';
 import StyledWrapper from '../components/StyledWrapper';
 import SVG from '../components/svgCollection';
 import useStore from '../hooks/useStore';
@@ -18,6 +19,7 @@ export default function HomePage() {
 	const checkItem = useStore(state => state.checkItem);
 	const deleteItem = useStore(state => state.deleteItem);
 	const getCategories = useStore(state => state.getCategories);
+	const bookmarkCategory = useStore(state => state.bookmarkCategory);
 
 	useEffect(() => {
 		getItems(), getCategories();
@@ -67,7 +69,7 @@ export default function HomePage() {
 														>
 															{item.item}
 														</span>
-														<StyledButton
+														<StyledTrashButton
 															type="button"
 															onClick={() => {
 																deleteItem(item._id);
@@ -79,7 +81,7 @@ export default function HomePage() {
 																color="grey"
 																fill="white"
 															/>
-														</StyledButton>
+														</StyledTrashButton>
 													</StyledLi>
 												);
 											})}
@@ -87,6 +89,18 @@ export default function HomePage() {
 								);
 							})}
 					</StyledWrapper>
+					<StyledButton
+						variant="reset"
+						onClick={() => {
+							categories.filter(category =>
+								category.isBookmarked
+									? bookmarkCategory(category._id, !category.isBookmarked)
+									: ''
+							);
+						}}
+					>
+						reset
+					</StyledButton>
 				</Layout>
 			</>
 		);
@@ -98,7 +112,7 @@ const StyledLi = styled.li`
 	align-items: center;
 `;
 
-const StyledButton = styled.button`
+const StyledTrashButton = styled.button`
 	margin-top: 5px;
 	transform: translate(0, -8%);
 	border: none;

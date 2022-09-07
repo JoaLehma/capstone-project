@@ -73,7 +73,7 @@ export default function CategoryCard() {
 			<StyledFormWrapper>
 				<form aria-label="Create an Category" onSubmit={handleSubmit}>
 					<label>
-						Category:
+						Your trip:
 						<StyledInput
 							type="text"
 							id="categoryInput"
@@ -81,7 +81,7 @@ export default function CategoryCard() {
 							name="categoryInput"
 							autoComplete="off"
 							minLength="3"
-							placeholder="create an item-card"
+							placeholder="where to go?"
 						/>
 					</label>
 					<button type="submit">Submit</button>
@@ -94,7 +94,7 @@ export default function CategoryCard() {
 
 const StyledlList = styled.ul`
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	align-items: center;
 	padding: 0;
 	list-style: none;
@@ -104,7 +104,7 @@ const StyledCard = styled.article`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 200px;
+	width: 275px;
 	height: fit-content;
 	margin-top: 20px;
 	border-radius: 10px;
@@ -139,7 +139,7 @@ const StyledTrashcanButton = styled.button`
 const StyledButtonWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 200px;
+	width: 275px;
 `;
 
 const StyledAddButton = styled.button`

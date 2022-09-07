@@ -47,6 +47,12 @@ const StyledButton = styled.button`
 		css`
 			width: 100px;
 		`}
+
+		${({variant}) =>
+		variant === 'reset' &&
+		css`
+			width: 75px;
+		`}
 `;
 
 export default StyledButton;
