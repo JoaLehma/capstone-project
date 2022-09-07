@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
+import StyledButton from './StyledButton';
+import StyledInput from './StyledInput';
 import {LogoutButton} from './StyledLogoutButton';
 import SVG from './svgCollection';
 
@@ -84,7 +86,9 @@ export default function CategoryCard() {
 							placeholder="where to go?"
 						/>
 					</label>
-					<button type="submit">Submit</button>
+					<StyledButton variant="submit" type="submit">
+						Submit
+					</StyledButton>
 				</form>
 				<LogoutButton />
 			</StyledFormWrapper>
@@ -154,10 +158,6 @@ const StyledAddButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
-`;
-
-const StyledInput = styled.input`
-	margin: 5px;
 `;
 
 const StyledFormWrapper = styled.div`

@@ -55,6 +55,13 @@ const StyledButton = styled.button`
 			width: 75px;
 			margin-top: 15px;
 		`}
+
+		${({variant}) =>
+		variant === 'submit' &&
+		css`
+			width: 60px;
+			height: 30px;
+		`}
 `;
 
 export default StyledButton;

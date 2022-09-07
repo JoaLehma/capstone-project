@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import useStore from '../hooks/useStore';
 
+import StyledButton from './StyledButton';
+import StyledInput from './StyledInput';
 import {LogoutButton} from './StyledLogoutButton';
 import SVG from './svgCollection';
 
@@ -33,14 +35,14 @@ export default function ItemsForm(category) {
 							<StyledLi key={item._id}>
 								<label htmlFor="items" />
 								<span>{item.item}</span>
-								<StyledButton
+								<StyledTrashButton
 									type="button"
 									onClick={() => {
 										deleteItem(item._id);
 									}}
 								>
 									<SVG size="16px" variant="trash" color="grey" fill="white" />
-								</StyledButton>
+								</StyledTrashButton>
 							</StyledLi>
 						);
 					})}
@@ -59,17 +61,15 @@ export default function ItemsForm(category) {
 							placeholder="don't forget me"
 						/>
 					</label>
-					<button type="submit">Submit</button>
+					<StyledButton varian="submit" type="submit">
+						Submit
+					</StyledButton>
 				</form>
 				<LogoutButton />
 			</FormWrapper>
 		</>
 	);
 }
-
-const StyledInput = styled.input`
-	margin: 5px;
-`;
 
 const StyledList = styled.ul`
 	list-style: none;
@@ -80,7 +80,7 @@ const StyledLi = styled.li`
 	align-items: center;
 `;
 
-const StyledButton = styled.button`
+const StyledTrashButton = styled.button`
 	margin-top: 5px;
 	transform: translate(0, -8%);
 	border: none;
