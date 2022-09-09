@@ -1,8 +1,10 @@
 import {useSession} from 'next-auth/react';
 import Head from 'next/head';
 
+import CategoryCard from '../components/CatergoryCard';
+import Layout from '../components/Layout';
 import {Login} from '../components/Login';
-import StyledForm from '../components/StyledForm';
+import StyledHeadline from '../components/StyledHeadline';
 import StyledWrapper from '../components/StyledWrapper';
 
 export default function HomePage() {
@@ -10,14 +12,16 @@ export default function HomePage() {
 	if (session) {
 		return (
 			<>
-				<Head>
-					<title key="title">just pack</title>
-					<meta key="description" name="description" content="This is my project" />
-				</Head>
-				<StyledWrapper>
-					<h1>just pack</h1>
-					<StyledForm />
-				</StyledWrapper>
+				<Layout>
+					<Head>
+						<title key="title">just pack</title>
+						<meta key="description" name="description" content="This is my project" />
+					</Head>
+					<StyledWrapper>
+						<StyledHeadline>just pack</StyledHeadline>
+						<CategoryCard />
+					</StyledWrapper>
+				</Layout>
 			</>
 		);
 	} else return <Login />;

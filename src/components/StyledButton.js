@@ -1,22 +1,9 @@
-import {useSession, signOut} from 'next-auth/react';
-import styled from 'styled-components';
-export default function LogoutButton() {
-	const {data: session} = useSession();
-	if (session) {
-		return (
-			<>
-				Signed in as {session.user.email} <br />
-				<StyledLogoutButton onClick={() => signOut()}>Sign out</StyledLogoutButton>
-			</>
-		);
-	}
-}
+import styled, {css} from 'styled-components';
 
-const StyledLogoutButton = styled.button`
+const StyledButton = styled.button`
 	display: inline-block;
 	position: relative;
 	box-sizing: border-box;
-	width: 100px;
 	padding: 1px 10px 0 11px;
 	border: 1px solid #d5d9d9;
 	border-radius: 8px;
@@ -42,4 +29,39 @@ const StyledLogoutButton = styled.button`
 		outline: 0;
 		box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
 	}
+
+	${({variant}) =>
+		variant === 'return' &&
+		css`
+			width: 50px;
+			padding-top 7px;
+		`}
+
+	${({variant}) =>
+		variant === 'login' &&
+		css`
+			width: 100px;
+		`}
+
+		${({variant}) =>
+		variant === 'logout' &&
+		css`
+			width: 100px;
+		`}
+
+		${({variant}) =>
+		variant === 'reset' &&
+		css`
+			width: 75px;
+			margin-top: 15px;
+		`}
+
+		${({variant}) =>
+		variant === 'submit' &&
+		css`
+			width: 60px;
+			height: 30px;
+		`}
 `;
+
+export default StyledButton;
