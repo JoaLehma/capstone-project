@@ -9,7 +9,6 @@ import {Login} from '../components/Login';
 import ResetModal from '../components/ResetModal';
 import StyledButton from '../components/StyledButton';
 import StyledWrapper from '../components/StyledWrapper';
-import SVG from '../components/svgCollection';
 import useStore from '../hooks/useStore';
 
 export default function HomePage() {
@@ -19,7 +18,6 @@ export default function HomePage() {
 	items.sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
 	const getItems = useStore(state => state.getItems);
 	const checkItem = useStore(state => state.checkItem);
-	const deleteItem = useStore(state => state.deleteItem);
 	const getCategories = useStore(state => state.getCategories);
 	const bookmarkCategory = useStore(state => state.bookmarkCategory);
 
@@ -77,19 +75,6 @@ export default function HomePage() {
 														>
 															{item.item}
 														</span>
-														<StyledTrashButton
-															type="button"
-															onClick={() => {
-																deleteItem(item._id);
-															}}
-														>
-															<SVG
-																size="16px"
-																variant="trash"
-																color="grey"
-																fill="white"
-															/>
-														</StyledTrashButton>
 													</StyledLi>
 												);
 											})}
@@ -135,16 +120,6 @@ export default function HomePage() {
 const StyledLi = styled.li`
 	display: flex;
 	align-items: center;
-`;
-
-const StyledTrashButton = styled.button`
-	margin-top: 5px;
-	transform: translate(0, -8%);
-	border: none;
-	background-color: transparent;
-	&:hover {
-		cursor: pointer;
-	}
 `;
 
 const StyledButtonWrapper = styled.div`
